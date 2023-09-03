@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile
     command: ["master", "50051"]
+    tty: true
+    stdin_open: true
     ports:
       - "50051:50051"
     networks:
