@@ -128,7 +128,7 @@ def register_with_master(master_node, slave_ip, slave_port):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Distributed Cache Server")
     parser.add_argument("node_type", choices=["master", "slave"], help="Type of the node ('master' or 'slave')")
-    parser.add_argument("port", type=int, help="Port number to start the node on")
+    parser.add_argument("port", default=50051, type=int, help="Port number to start the node on")
     parser.add_argument("--master_ip", default="localhost", help="IP address of the master node (required if node_type is 'slave')")
     parser.add_argument("--master_port", type=int, default=50051, help="Port number of the master node (required if node_type is 'slave')")
     

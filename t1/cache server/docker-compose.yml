@@ -1,0 +1,14 @@
+version: '3'
+services:
+  master:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["master", "50051"]
+    ports:
+      - "50051:50051"
+    networks:
+      - cache_network
+
+networks:
+  cache_network:
