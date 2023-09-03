@@ -12,5 +12,14 @@ services:
     networks:
       - cache_network
 
+  slave:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["slave", "50051", "--master_ip", "master", "--master_port", "50051"]
+    tty: true
+    stdin_open: true
+    networks:
+      - cache_network
 networks:
   cache_network:

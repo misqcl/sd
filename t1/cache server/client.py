@@ -23,7 +23,6 @@ class CacheClient:
         response = self.stub.Remove(cache_service_pb2.Key(key=key))
         print(response.message)
 
-
 if __name__ == "__main__":
     # get key from args
     import sys
