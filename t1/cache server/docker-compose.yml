@@ -21,5 +21,9 @@ services:
     stdin_open: true
     networks:
       - cache_network
+    restart: always
+    depends_on: 
+      - master
+
 networks:
   cache_network:

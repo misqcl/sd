@@ -54,3 +54,9 @@ Al iniciarse, el buscador establece una conexión con el servidor de caché y ca
 
 # Mini diagrama
 ![plot](./Sistemacache.png)
+
+# Como levantar servidor
+```
+cd "cache server"
+docker compose up
+```
