@@ -132,13 +132,14 @@ if __name__ == '__main__':
     parser.add_argument("--master_ip", default="localhost", help="IP address of the master node (required if node_type is 'slave')")
     parser.add_argument("--master_port", type=int, default=50051, help="Port number of the master node (required if node_type is 'slave')")
     parser.add_argument("--service_name", default="localhost", help="Docker Compose service name for the slave node (optional)")
-    
+
     args = parser.parse_args()
 
     if args.node_type == "master":
         serve(is_master=True, port=args.port)
     elif args.node_type == "slave":
-        register_with_master(f"{args.master_ip}:{args.master_port}", "localhost", args.port)
+        service_name = args.service_name if args.service_name else "localhost"
+        register_with_master(f"{args.master_ip}:{args.master_port}", service_name, args.port)
         serve(is_master=False, port=args.port)
     else:
         print("Unknown node type. Use 'master' or 'slave'.")

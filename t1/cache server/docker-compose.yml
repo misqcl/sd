@@ -2,14 +2,14 @@ version: '3'
 services:
   master:
     build:
-      context: ./app/master
+      context: ./app/server
       dockerfile: Dockerfile
     container_name: master
     command: ["master", "50051"]
     tty: true
     stdin_open: true
     volumes:
-      - './app/master:/app'
+      - './app/server:/app'
     ports:
       - "50051:50051"
     networks:
@@ -17,14 +17,14 @@ services:
 
   slave:
     build:
-      context: ./app/client
+      context: ./app/server
       dockerfile: Dockerfile
     container_name: slave
-    command: ["slave", "50051", "--master_ip", "master", "--master_port", "50051"]
+    command: ["slave", "50051", "--master_ip", "master", "--master_port", "50051", "--service_name", "slave"]
     tty: true
     stdin_open: true
     volumes:
-      - './app/client:/app'
+      - './app/server:/app'
       - './data_gen/cars.json:/app/cars.json'
     networks:
       - cache_network
