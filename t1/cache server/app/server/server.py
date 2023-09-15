@@ -1,4 +1,5 @@
 import grpc
+import socket
 from concurrent import futures
 from collections import OrderedDict
 import uhashring
@@ -135,10 +136,12 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
+    ip_address = socket.gethostbyname(socket.gethostname())
+
     if args.node_type == "master":
         serve(is_master=True, port=args.port)
     elif args.node_type == "slave":
-        service_name = args.service_name if args.service_name else "localhost"
+        service_name = args.service_name if args.service_name != "localhost" else ip_address
         register_with_master(f"{args.master_ip}:{args.master_port}", service_name, args.port)
         serve(is_master=False, port=args.port)
     else:
