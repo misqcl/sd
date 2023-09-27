@@ -15,7 +15,13 @@ if __name__ == '__main__':
         if choice == "1":
             n_searches = int(input("Enter the number of searches you want to simulate: "))
             start_time = time.time()  # Inicio del temporizador
-            value = find_car_by_id(int(key))
+            with open('data.json', 'r') as json_file:
+                data = json.load(json_file)
+                numbers = data['numbers']
+                random_index = random.randint(0, len(numbers) - 1)
+                random_number = numbers[random_index]
+
+            value = find_car_by_id(int(random_index))
             value = str(value)
             if value:
                 print("Key found in JSON. Adding to cache...")
