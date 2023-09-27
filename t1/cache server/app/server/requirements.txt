@@ -4,3 +4,5 @@ uhashring==2.3
 numpy
 google
 protobuf
+google-cloud
+oogle-cloud-vision
