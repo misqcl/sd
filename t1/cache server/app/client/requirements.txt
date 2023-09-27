@@ -5,4 +5,4 @@ numpy
 google
 protobuf
 google-cloud
-oogle-cloud-vision
+google-cloud-vision
