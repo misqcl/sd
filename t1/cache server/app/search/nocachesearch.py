@@ -15,7 +15,7 @@ if __name__ == '__main__':
         if choice == "1":
             n_searches = int(input("Enter the number of searches you want to simulate: "))
             start_time = time.time()  # Inicio del temporizador
-            with open('data.json', 'r') as json_file:
+            with open('cars.json', 'r') as json_file:
                 data = json.load(json_file)
                 numbers = data['numbers']
                 random_index = random.randint(0, len(numbers) - 1)
